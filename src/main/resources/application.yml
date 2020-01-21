@@ -1,0 +1,59 @@
+server:
+  servlet:
+    context-path: /mss
+  port: 8888
+
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+
+durid:
+    type: com.alibaba.druid.pool.DruidDataSource
+    master:
+      url: jdbc:mysql://132.122.235.101:3306/jgyw?characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true
+      driver-class-name: com.mysql.jdbc.Driver
+      username: mysql
+      password: aa158747
+      initialSize: 5
+      minIdle: 1
+      maxActive: 100
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 3000000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreParedStatements: true
+      maxPoolPreparedStatementPerconnectionSize: 20
+      useGlobalDatasourceStat: true
+    slave:
+      url: jdbc:mysql://132.122.235.102:3306/jgyw?characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true
+      driver-class-name: com.mysql.jdbc.Driver
+      username: mysql
+      password: aa158747
+      initialSize: 5
+      minIdle: 1
+      maxActive: 100
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 3000000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreParedStatements: true
+      maxPoolPreparedStatementPerconnectionSize: 20
+      useGlobalDatasourceStat: true
+
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.nick.ms.entity
+logging:
+  level:
+    com.nick.ms: debug
